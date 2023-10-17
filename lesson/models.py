@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 
+from course.models import Course
 
 
 class Lesson(models.Model):
@@ -8,7 +9,7 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='описание')
     photo = models.ImageField(upload_to='photo/', blank=True, null=True, verbose_name='превью')
     video_link = models.URLField(blank=True, null=True, verbose_name='видео')
-
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс')
     def __str__(self):
         return self.title
 
