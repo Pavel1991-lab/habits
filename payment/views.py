@@ -4,6 +4,7 @@ from rest_framework.filters import OrderingFilter
 
 from payment.models import Payment
 from payment.serlizers import PaymentSerlizer
+from rest_framework.permissions import IsAuthenticated
 
 
 class PaymentListAPIView(generics.ListAPIView):
@@ -12,3 +13,5 @@ class PaymentListAPIView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, OrderingFilter]  # Бэкенд для обработки фильтра
     filterset_fields = ('paid_course_or_lesson', 'payment_method')
     ordering_fields = ('payment_date')
+
+
