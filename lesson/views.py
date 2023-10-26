@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 
 from users.permissions import IsOwnerOrStaff
 
+from lesson.paginators import LessonPaginator
+
 
 class LessonCreateAPIView(generics.CreateAPIView):
     serializer_class = LessonSerlizer
@@ -24,6 +26,7 @@ class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerlizer
     queryset = Lesson.objects.all()
     permission_classes = [IsOwnerOrStaff]
+    pagination_class = LessonPaginator
 
 
 class LessonRetrivAPIView(generics.RetrieveAPIView):
