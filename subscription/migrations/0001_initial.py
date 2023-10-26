@@ -14,18 +14,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Lesson',
+            name='Subscription',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=15, verbose_name='название')),
-                ('description', models.TextField(verbose_name='описание')),
-                ('photo', models.ImageField(blank=True, null=True, upload_to='photo/', verbose_name='превью')),
-                ('video_link', models.URLField(blank=True, null=True, verbose_name='видео')),
+                ('is_active', models.BooleanField(default=True, verbose_name='подписка')),
                 ('course', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='course.course', verbose_name='курс')),
             ],
             options={
-                'verbose_name': 'урок',
-                'verbose_name_plural': 'уроки',
+                'verbose_name': 'активна',
+                'verbose_name_plural': 'активные',
             },
         ),
     ]
