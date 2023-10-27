@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'subscription',
     'django_filters',
     'rest_framework_simplejwt',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
