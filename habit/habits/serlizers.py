@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from rest_framework.relations import SlugRelatedField
 from habits.models import Habit
-from users.models import User
 
 
 class HabitsSerlizer(serializers.ModelSerializer):
