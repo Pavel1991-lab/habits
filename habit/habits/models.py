@@ -8,7 +8,7 @@ class Habit(models.Model):
     time = models.TimeField()
     action = models.CharField(max_length=100, blank=True, null=True)
     is_pleasurable = models.BooleanField(default=False)
-    related_habit = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
+    related_habit = models.ForeignKey('Habit', on_delete=models.SET_NULL, null=True, blank=True)
     frequency = models.IntegerField(default=1, blank=True, null=True)
     reward = models.CharField(max_length=100, blank=True, null=True)
     estimated_time = models.IntegerField()

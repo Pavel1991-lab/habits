@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'habits',
-    'users'
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'habit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'habits',
+        'NAME': 'habits_db',
         'USER': 'pavel',
         'PASSWORD': os.getenv("PASSWORD"),
         'HOST': 'localhost',
