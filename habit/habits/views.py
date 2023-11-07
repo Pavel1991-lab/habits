@@ -9,7 +9,6 @@ class HabitsViewSet(viewsets.ModelViewSet):
     serializer_class = HabitsSerlizer
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated]
-    print(Habit.objects.all())
 
 
     def perform_create(self, serializer):
