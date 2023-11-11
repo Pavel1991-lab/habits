@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'habits',
     'users',
+    'drf_yasg',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'habit.urls'
@@ -86,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'habits_db',
-        'USER': 'pavel',
+        'USER': 'paha',
         'PASSWORD': os.getenv("PASSWORD"),
         'HOST': 'localhost',
         'PORT': '5432',
@@ -151,3 +156,13 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
