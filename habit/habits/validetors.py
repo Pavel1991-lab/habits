@@ -51,12 +51,3 @@ class HabitWithoutRewardRelated:
         if tempval1 == True and (tempval2 is not None or tempval3 is not None):
             raise ValidationError("Plesure habit can not have reward and related habit")
 
-class HabitFrequency:
-    def __init__(self, field1):
-        self.field1 = field1
-
-    def __call__(self, value):
-        tempval1 = dict(value).get(self.field1)
-        if tempval1 > 120:
-            raise ValidationError("Too long.")
-
