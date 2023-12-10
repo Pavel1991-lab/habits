@@ -20,7 +20,7 @@ class Habit(models.Model):
     reward = models.CharField(max_length=100, blank=True, null=True)
     estimated_time = models.IntegerField()
     is_public = models.BooleanField(default=False, blank=True, null=True)
-
+    habit_date = models.DateField()
 
 
     def __str__(self):
