@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'course',
     'lesson',
     'payment',
+    'subscription',
     'django_filters',
+    'rest_framework_simplejwt',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -84,8 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'home',
-        'USER': 'paha',
-        'PASSWORD': 'Ovcebuk17!',
+        'USER': 'pavel',
+        'PASSWORD': 'password',
         'HOST': 'localhost'
     }
 }
@@ -133,3 +136,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
