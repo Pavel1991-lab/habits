@@ -6,7 +6,7 @@ from subscription.apps import SubscriptionConfig
 app_name = SubscriptionConfig.name
 
 router = DefaultRouter()
-router.register(r'course', SubscriptionViewSet, basename='subscription')
+router.register(r'', SubscriptionViewSet, basename='subscription')
 
 
 urlpatterns = [
