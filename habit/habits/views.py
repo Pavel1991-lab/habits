@@ -25,7 +25,7 @@ class HabitsViewSet(viewsets.ModelViewSet):
                 public_habits = Habit.objects.filter(is_public=True)
                 return owned_habits | public_habits
         else:
-            return None  # неаутентифицированные пользователи могут видеть только общедоступные привычки
+            return None
 
     def perform_create(self, serializer):
         new_habits = serializer.save()
