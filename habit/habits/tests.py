@@ -10,7 +10,18 @@ from habits.models import Habit
 class HabitModelTest(APITestCase):
 
     def setUp(self) -> None:
-        pass
+        super().setUp()
+        self.habit = Habit.objects.create(
+            place = 'Парк',
+            time = '08:00:00',
+            action = 'Утренняя пробежка',
+            is_pleasurable = False,
+            frequency = 'weekly',
+            reward = 'Завтрак с любимыми продуктами',
+            estimated_time = 30,
+            is_public = True,
+            habit_date = '2022-12-31'
+        )
 
 
 
@@ -51,17 +62,7 @@ class HabitModelTest(APITestCase):
         user = User.objects.create(username='pavel', password='123')
         self.client.force_authenticate(user)
 
-        Habit.objects.create(
-            place = 'Парк',
-            time = '08:00:00',
-            action = 'Утренняя пробежка',
-            is_pleasurable = False,
-            frequency = 'weekly',
-            reward = 'Завтрак с любимыми продуктами',
-            estimated_time = 30,
-            is_public = True,
-            habit_date = '2022-12-31'
-        )
+
 
         response = self.client.get(
             '/habits/'
