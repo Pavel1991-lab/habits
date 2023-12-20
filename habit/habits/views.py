@@ -34,8 +34,3 @@ class HabitsViewSet(viewsets.ModelViewSet):
 
 
 
-# class PublicHabitListAPIView(generics.ListAPIView):
-#     queryset = Habit.objects.filter(is_public=True)
-#     permission_classes = [IsAuthenticated]
-#     serializer_class = HabitsSerlizer
-#     pagination_class = HabitsPaginator

@@ -176,7 +176,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_BEAT_SCHEDULE = {
     'emailhabit': {
         'task': 'habits.tasks.emailhabit',
-        'schedule': timedelta(minutes=1),
+        'schedule': timedelta(minutes=60),
     },
 }
 
