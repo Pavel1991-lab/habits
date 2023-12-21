@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 
 class StripePayment:
-    stripe.api_key = 'sk_test_51O5uoRDhwhiDdBd4PS8ygNqNRAXUkoMdty6gN6SqLFazCOAEkUGIDEEm6P6i1tHPGL6MMvr8qE74zAHnTBBvpVdn00ZlaesCDi'
+    stripe.api_key = os.getenv("KEY_STRIPE")
 
     def __init__(self, paid_object, payment_method, payment_amount):
         self.paid_object = paid_object

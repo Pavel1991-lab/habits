@@ -33,7 +33,7 @@ class PaymentCreateAPIView(generics.CreateAPIView):
 
         if payment_serializer.is_valid():
             payment_serializer.save()
-            # payment_id = payment_serializer.data['id']
+
 
             stripe_handler = StripePayment(
                 paid_object=payment_data.get('course_paid', payment_data.get('lesson_paid')),
