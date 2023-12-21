@@ -12,5 +12,7 @@ class LessonValidator:
     def __call__(self, value):
         reg = re.compile('https://youtube.com')
         tnp_val = dict(value).get(self.field)
-        if not bool(reg.match(tnp_val)):
-            raise ValidationError('Only Youtube')
+        if tnp_val:
+            if 'https://www.youtube.com/' not in tnp_val:
+                raise ValidationError('Only youtube')
+
