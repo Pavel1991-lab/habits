@@ -6,7 +6,7 @@ from lesson.serlizers import LessonSerlizer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 # from users.permissions import IsOwnerOrStaff
-
+from tasks import  send_lesson_update_notification
 from lesson.paginators import LessonPaginator
 
 
@@ -41,6 +41,9 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
     queryset = Lesson.objects.all()
     permission_classes = [AllowAny]
 
+    def perform_update(self, serializer):
+        lesson_id = serializer.save()
+        send_lesson_update_notification.delay(lesson_id.id)
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):
