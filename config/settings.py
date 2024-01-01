@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'users.signals.SetLastVisitMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -94,8 +95,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'home',
-        'USER': 'pavel',
-        'PASSWORD': os.getenv("PASSWORD"),
+        'USER': 'paha',
+        'PASSWORD': 'Ovcebuk17!',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -180,3 +183,11 @@ EMAIL_USE_TLS = False
 
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+
+
+CELERY_BEAT_SCHEDULE = {
+    'user_unactive': {
+        'task': 'drf_lesson.tasks.user_unactive',
+        'schedule': timedelta(minutes=1),
+    },
+}
