@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'home',
         'USER': 'paha',
-        'PASSWORD': 'Ovcebuk17!',
+        'PASSWORD': os.getenv("password"),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -175,7 +175,7 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_HOST_USER = 'alexpervosotnikov@yandex.ru'
-EMAIL_HOST_PASSWORD = 'hcawnhfmwbvudfgu'
+EMAIL_HOST_PASSWORD = os.getenv("pas_email")
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
