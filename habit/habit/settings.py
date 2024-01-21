@@ -91,11 +91,13 @@ WSGI_APPLICATION = 'habit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'habit_db',
-        'USER': 'pavel',
-        'PASSWORD': os.getenv("PASSWORD"),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'habits_db',
+        'USER': 'postgres',
+        'PASSWORD': 'mysecretpassword',
+        'HOST': 'db',
+        # 'USER': 'paha',
+        # 'PASSWORD': 'Ovcebuk17!',
+        # 'HOST': 'localhost',
     }
 }
 
@@ -169,14 +171,16 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# CELERY_BROKER_URL = 'redis://localhost:6379'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
 CELERY_BEAT_SCHEDULE = {
     'emailhabit': {
         'task': 'habits.tasks.emailhabit',
-        'schedule': timedelta(minutes=60),
+        'schedule': timedelta(minutes=1),
     },
 }
 
