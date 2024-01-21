@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users',
     'drf_yasg',
     "corsheaders",
+    "django_celery_beat"
 ]
 
 MIDDLEWARE = [
@@ -91,10 +92,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'habits_db',
-        'USER': 'paha',
-        'PASSWORD': os.getenv("PASSWORD"),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'mysecretpassword',
+        'HOST': 'db',
+        # 'USER': 'paha',
+        # 'PASSWORD': 'Ovcebuk17!',
+        # 'HOST': 'localhost',
     }
 }
 
@@ -166,3 +169,18 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
+
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
+
+# CELERY_BROKER_URL = 'redis://localhost:6379'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+CELERY_BEAT_SCHEDULE = {
+    'emailhabit': {
+        'task': 'habits.tasks.emailhabit',
+        'schedule': timedelta(minutes=1),
+    },
+}
+
